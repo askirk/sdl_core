@@ -31,7 +31,9 @@
 include(${CMAKE_SOURCE_DIR}/tools/cmake/helpers/platform.cmake)
 include(${CMAKE_SOURCE_DIR}/tools/cmake/helpers/sources.cmake)
 
-find_package(Sqlite3 REQUIRED)
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  find_package(Sqlite3 REQUIRED)
+endif()
 
 include_directories (
   ${COMPONENTS_DIR}/utils/include
@@ -101,7 +103,7 @@ set(PATHS
 collect_sources(SOURCES "${PATHS}" "${EXCLUDE_PATHS}")
 
 if (CMAKE_SYSTEM_NAME STREQUAL "QNX")
-    # --- QDB Wrapper 
+    # --- QDB Wrapper
     add_subdirectory(./src/qdb_wrapper)
 else ()
     # --- SQLite Wrapper
@@ -109,7 +111,7 @@ else ()
 endif ()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
- list(APPEND LIBRARIES dl pthread ${RTLIB}) 
+ list(APPEND LIBRARIES dl pthread ${RTLIB})
 endif()
 
 add_library("Utils" ${SOURCES})

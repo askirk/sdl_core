@@ -323,7 +323,7 @@ InitResult SQLPTRepresentation::Init(const PolicySettings* settings) {
 #endif  // BUILD_TESTS
   std::string path = get_settings().app_storage_folder();
   if (!path.empty()) {
-    db_->set_path(path + "/");
+    //db_->set_path(path + "/");
   }
   if (!db_->Open()) {
     LOG4CXX_ERROR(logger_, "Failed opening database.");
@@ -1634,7 +1634,7 @@ bool SQLPTRepresentation::SetIsDefault(const std::string& app_id,
 }
 
 void SQLPTRepresentation::RemoveDB() const {
-  file_system::DeleteFile(db_->get_path());
+  //file_system::DeleteFile(db_->get_path());
 }
 
 bool SQLPTRepresentation::IsDBVersionActual() const {

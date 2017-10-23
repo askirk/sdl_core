@@ -35,7 +35,7 @@
 
 #include <qdb/qdb.h>
 #include <string>
-#include "qdb_wrapper/sql_error.h"
+#include "sql_error.h"
 #include "utils/lock.h"
 
 namespace utils {

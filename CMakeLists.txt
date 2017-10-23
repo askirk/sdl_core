@@ -191,7 +191,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR})
 set(ARCHIVE_OUTPUT_DIRECTORY ./bin)
 
-set(CMAKE_CXX_FLAGS "-fPIC -std=gnu++0x -Wall -Werror -Wno-deprecated-declarations -Wuninitialized -Wvla")
+set(CMAKE_CXX_FLAGS "-fPIC -std=gnu++0x -Wall -Wno-deprecated-declarations -Wuninitialized -Wvla")
 
 if (USE_GOLD_LD)
   execute_process(COMMAND ld -v OUTPUT_VARIABLE result)
@@ -384,7 +384,7 @@ include_directories(
 # --- 3rd party libs
 add_subdirectory(./src/3rd_party EXCLUDE_FROM_ALL)
 
-find_package(OpenSSL REQUIRED)
+#find_package(OpenSSL REQUIRED)
 if(ENABLE_LOG)
   include_directories ( ${LOG4CXX_INCLUDE_DIRECTORY} )
 endif()
@@ -459,4 +459,3 @@ find_package(Doxygen)
     message(STATUS "To enable processing of MscGen comments please install mscgen")
     message(STATUS "sudo apt-get install mscgen")
 endif()
-

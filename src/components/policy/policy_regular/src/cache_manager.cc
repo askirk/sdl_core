@@ -42,6 +42,8 @@
 #include "json/features.h"
 #include "json/writer.h"
 #include "utils/logger.h"
+#include <errno.h>
+#include <sstream>
 #include "utils/date_time.h"
 #include "utils/gen_hash.h"
 #include "utils/macro.h"
