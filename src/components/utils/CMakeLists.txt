@@ -82,13 +82,6 @@ else()
   )
 endif()
 
-if(NOT BUILD_BT_SUPPORT)
-  list(APPEND EXCLUDE_PATHS
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/utils/bluetooth
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/bluetooth
-  )
-endif()
-
 if (NOT CMAKE_SYSTEM_NAME STREQUAL "QNX")
     list(APPEND EXCLUDE_PATHS
       pulse_thread_delegate.cc
@@ -101,6 +94,24 @@ set(PATHS
 )
 
 collect_sources(SOURCES "${PATHS}" "${EXCLUDE_PATHS}")
+
+list(APPEND SOURCES
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/bitstream.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/conditional_variable_posix.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/file_system.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/threads/thread_posix.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/threads/thread_delegate.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/threads/thread_validator.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/threads/async_runner.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/lock_posix.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/rwlock_posix.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/date_time.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/signals_posix.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/system.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/resource_usage.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/appenders_loader.cc
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/gen_hash.cc
+  )
 
 if (CMAKE_SYSTEM_NAME STREQUAL "QNX")
     # --- QDB Wrapper

@@ -28,8 +28,7 @@
 #include <log4cxx/helpers/dateformat.h>
 #include <vector>
 #include <time.h>
-
-namespace std { class locale; }
+#include <locale>
 
 namespace log4cxx
 {
@@ -78,7 +77,7 @@ namespace log4cxx
                   LOG4CXX_LIST_DEF(PatternTokenList, log4cxx::helpers::SimpleDateFormatImpl::PatternToken*);
 
                   PatternTokenList pattern;
-                  
+
                   static void addToken(const logchar spec, const int repeat, const std::locale* locale, PatternTokenList& pattern);
                   static void parsePattern(const LogString& spec, const std::locale* locale, PatternTokenList& pattern);
           };

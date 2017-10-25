@@ -113,6 +113,7 @@ set(LIBRARIES
   jsoncpp
   ConfigProfile
   Resumption
+  socket
 )
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Linux")

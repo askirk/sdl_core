@@ -18,6 +18,7 @@
 #include <log4cxx/helpers/objectptr.h>
 #include <log4cxx/helpers/exception.h>
 #include <apr_atomic.h>
+#include <stdint.h>
 
 using namespace log4cxx::helpers;
 
@@ -38,7 +39,7 @@ void* ObjectPtrBase::exchange(void** destination, void* newValue) {
     return InterlockedExchangePointer(destination, newValue);
 #elif APR_SIZEOF_VOIDP == 4
    return (void*) apr_atomic_xchg32((volatile apr_uint32_t*) destination,
-                          (apr_uint32_t) newValue);
+                          (apr_uint32_t) (intptr_t) newValue);
 #else
    void* oldValue = *destination;
    *destination = newValue;

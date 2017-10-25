@@ -29,6 +29,7 @@
 #include <log4cxx/private/log4cxx_private.h>
 #include <cctype>
 #include <apr.h>
+#include <stdlib.h>
 
 
 using namespace log4cxx;
@@ -156,4 +157,3 @@ LogString StringHelper::format(const LogString& pattern, const std::vector<LogSt
 
   return result;
 }
-
